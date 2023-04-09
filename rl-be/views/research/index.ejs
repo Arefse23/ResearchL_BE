@@ -1,0 +1,29 @@
+<h1> Categories </h1>
+
+<table class="table table-striped">
+    <tr>
+        <th> Topic </th>
+        <th> Author </th>
+        <th> Categories </th>
+        <th> Date of Publish </th>
+        <!-- <th> Author </th> -->
+        <th> Created At </th>
+        <th> Updated At </th>
+        <th> Edit </th>
+        <th> Delete </th>
+    </tr>
+
+    <% researchs.forEach(function(research){ %> 
+    <tr>
+        <td> <a href="/research/detail?id=<%= research._id %>"><%= research.researchSubject %></a> </td>
+        <td> <%= research.author %> </td>
+        <td> <%= research.categories %> </td>
+        <td> <%= research.dateofpublish %> </td>
+        <td> <%= moment(research.createdAt).fromNow() %> </td>
+        <td> <%= moment(research.updatedAt).fromNow() %> </td>
+
+        <td> <a href="/research/edit?id=<%= research._id %>"> Edit </a> </td>
+        <td> <a href="/research/delete?id=<%= research._id %>"> Delete </a> </td>
+    </tr>
+<% }) %>
+</table>

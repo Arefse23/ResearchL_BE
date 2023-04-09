@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
 
 const researchSchema = new mongoose.Schema({
-    researchSubject : {String,required: true},
-    author : {String,required: true},
-    dateofpublish : {Date,required: true},
-    researchIntro: {String,required: true},
-    categories :{String,required: true},
+    researchSubject : String,
+    author : String,
+    dateofpublish : Date,
+    researchIntro: String,
+    categories :String,
     user:[{
         type : mongoose.Schema.Types.ObjectId,
         ref: 'user'
     }]
 },{timestamps: true})
 
-module.exports = mongoose.model("Research", researchSchema)
+const Research = mongoose.model("Research", researchSchema)
+module.exports = Research

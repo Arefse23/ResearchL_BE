@@ -1,0 +1,26 @@
+<h2> <%= research.researchSubject %> </h2>
+
+<div>
+    Author: <%= research.author %>
+</div>
+
+<div>
+    Date of Publish: <%= research.dateofpublish %>
+</div>
+
+<div>
+    Research Introduction: <%= research.researchIntro %>
+</div>
+
+<div>
+    Categorie: <%= research.categories %>
+</div>
+
+<div>
+    Created At: <%= moment(research.createdAt).fromNow() %>
+</div>
+
+<div>
+    Updated At: <%= moment(research.updatedAt).fromNow() %>
+</div>
+

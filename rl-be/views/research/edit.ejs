@@ -1,0 +1,36 @@
+<h1> Edit Research </h1>
+
+<form method="POST" action="/research/add">
+
+    <div class="form-group">
+        <label>Research Topic</label>
+        <input type="text" name="researchSubject" value="<%= research.researchSubject %>" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Author</label>
+        <input type="text" name="author" value="<%= research.author %>" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Date of Publish</label>
+        <input type="datetime" name="dateofpublish" value="<%= research.dateofpublish %>" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Research Introduction</label>
+        <textarea name="researchIntro" value="<%= research.researchIntro %>" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Type of Research</label>
+        <select name="categories" value="<%= research.categories %>" class="form-control">
+        <option>Descriptive Research</option>
+        <option>Experimental Research</option>
+        <option>Exploratory Research</option>
+        <option>Historical Research</option>
+        </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Update Resaerch</button>
+</form>

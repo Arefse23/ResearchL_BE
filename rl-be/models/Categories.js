@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-const categoriesSchema = mongoose.Schema({
-    categoriesname : string,
-})
+const CategoriesSchema = mongoose.Schema({
+    categoriesname : String,
+},{timestamps: true})
+
+const Categories = mongoose.model("Categories", CategoriesSchema)
+module.exports = Categories
 

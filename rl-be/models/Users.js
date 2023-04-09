@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-    firstName : {String,required: true},
-    lastName : {String,required: true},
-    emailAddress : {String,required: true},
-    password : {String,required: true},
+    firstName : String,
+    lastName : String,
+    emailAddress : String,
+    password : String,
     Research:[{
         type : mongoose.Schema.Types.ObjectId,
-        ref : "Research"
+        ref : "research"
     }]
 }, {timestamps: true});
 
@@ -18,4 +18,5 @@ userSchema.methods.verifyPassword = function(password){
     return bcrypt.compareSync(password, this.password);
 }
 
-module.exports = mongoose.model('Users', userSchema)
+const User = mongoose.model('User', userSchema);
+module.exports =  User;

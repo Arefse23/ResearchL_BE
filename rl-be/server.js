@@ -6,7 +6,9 @@ const mongoose = require('mongoose')
 const port = process.env.PORT;
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var authRouter = require('./routes/auth');
+var researchRouter = require('./routes/research');
+
 
 var app = express();
 
@@ -14,13 +16,36 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+const expressLayouts = require("express-ejs-layouts");
+app.use(expressLayouts);
 
+let session = require('express-session');
+let passport = require('./helper/ppConfig');
+
+app.use(session({
+  secret: process.env.SECRET,
+  saveUninitialized: true,
+  resave: false,
+  cookie: {maxAge: 36000000}
+}));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function(req, res, next){
+  res.locals.currentUser = req.user;
+  next();
+})
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', authRouter);
+app.use('/', researchRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
