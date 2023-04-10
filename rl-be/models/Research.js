@@ -5,10 +5,11 @@ const researchSchema = new mongoose.Schema({
     author : String,
     dateofpublish : Date,
     researchIntro: String,
-    categories :String,
+    categories : String,
+    section : String,
     user:[{
         type : mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'Users'
     }]
 },{timestamps: true})
 

@@ -2,13 +2,16 @@ const express = require('express');
 const router = express.Router();
 router.use(express.urlencoded({ extended: true }));
 
+const isLoggedIn = require("../helper/isLoggedIn")
+
 let methodOverride = require("method-override");
-router.use(methodOverride('_method'));
+router.use(methodOverride('_method'))
 
-const categorieCntrl = require("../controllers/categories");
+const categoriesCtrl = require("../controllers/categories")
 
-router.get("/categories/add", categorieCntrl.categories_create_get);
-router.post("/categories/add", categorieCntrl.categories_create_post);
+router.get('/categories/index', categoriesCtrl.categories_index_get)
+
+
 
 
 module.exports = router;
