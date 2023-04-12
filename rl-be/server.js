@@ -5,6 +5,7 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const port = process.env.PORT;
 
+
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
 var researchRouter = require('./routes/research');
@@ -40,7 +41,10 @@ app.use(function(req, res, next){
 })
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+
+const buildPath = path.join(__dirname, 'build')
+app.use(express.static(buildPath))
+app.use(express.json())
 
 
 
@@ -48,6 +52,12 @@ app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/', researchRouter);
 app.use('/', categoriesRouter)
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
+
+
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
