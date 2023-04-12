@@ -6,7 +6,7 @@ const researchSchema = new mongoose.Schema({
     dateofpublish : Date,
     researchIntro: String,
     categories : String,
-    section : String,
+    researchlink : String,
     user:[{
         type : mongoose.Schema.Types.ObjectId,
         ref: 'Users'
